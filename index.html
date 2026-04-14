@@ -1,1 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M Raj Kumar - Cybersecurity Enthusiast & Aspiring Penetration Tester Portfolio">
+    <title>M Raj Kumar | Cybersecurity Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --accent: #ff69b4;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff69b4;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            bottom: -8px;
+            left: 0;
+            border-radius: 9999px;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(249 115 22 / 0.25);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            background-color: #ff69b4;
+            color: #111111;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
 
+    <!-- NAVBAR -->
+    <nav class="bg-black border-b border-pink-500/20 sticky top-0 z-50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center text-xl font-bold shadow-inner">
+                        👾
+                    </div>
+                    <h1 class="text-2xl font-semibold tracking-tighter font-['Space_Grotesk'] text-white">
+                        M Raj Kumar
+                    </h1>
+                    <span class="text-pink-400 text-xs font-medium px-3 py-1 bg-pink-500/10 rounded-3xl border border-pink-500/30">CEH</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#about" onclick="smoothScrollTo('about')" class="nav-link text-white hover:text-pink-400">About</a>
+                    <a href="#education" onclick="smoothScrollTo('education')" class="nav-link text-white hover:text-pink-400">Education</a>
+                    <a href="#experience" onclick="smoothScrollTo('experience')" class="nav-link text-white hover:text-pink-400">Experience</a>
+                    <a href="#projects" onclick="smoothScrollTo('projects')" class="nav-link text-white hover:text-pink-400">Projects</a>
+                    <a href="#skills" onclick="smoothScrollTo('skills')" class="nav-link text-white hover:text-pink-400">Skills</a>
+                    <a href="#certifications" onclick="smoothScrollTo('certifications')" class="nav-link text-white hover:text-pink-400">Certifications</a>
+                    <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link text-white hover:text-pink-400">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://linkedin.com" target="_blank" class="flex items-center justify-center w-9 h-9 border border-pink-500/30 hover:border-pink-400 rounded-2xl text-pink-400 hover:text-pink-300">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="flex items-center justify-center w-9 h-9 border border-pink-500/30 hover:border-pink-400 rounded-2xl text-pink-400 hover:text-pink-300">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    
+                    <a href="#" onclick="downloadResume()" 
+                       class="flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2.5 rounded-3xl text-sm font-semibold shadow-lg shadow-pink-500/30">
+                        <i class="fas fa-download"></i>
+                        <span>Resume</span>
+                    </a>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-2xl text-pink-400 hover:text-pink-300">
+                        <i id="hamburger-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-pink-500/20 py-4 px-6 flex flex-col gap-4 text-sm font-medium">
+                <a href="#about" onclick="toggleMobileMenu();smoothScrollTo('about')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">About</a>
+                <a href="#education" onclick="toggleMobileMenu();smoothScrollTo('education')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Education</a>
+                <a href="#experience" onclick="toggleMobileMenu();smoothScrollTo('experience')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Experience</a>
+                <a href="#projects" onclick="toggleMobileMenu();smoothScrollTo('projects')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Projects</a>
+                <a href="#skills" onclick="toggleMobileMenu();smoothScrollTo('skills')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Skills</a>
+                <a href="#certifications" onclick="toggleMobileMenu();smoothScrollTo('certifications')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Certifications</a>
+                <a href="#contact" onclick="toggleMobileMenu();smoothScrollTo('contact')" class="py-3 px-4 hover:bg-pink-500/10 rounded-2xl">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-pink-500/10 text-pink-400 text-sm font-medium px-5 py-2 rounded-3xl border border-pink-500/30">
+                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+                    OPEN TO OPPORTUNITIES
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-semibold font-['Space_Grotesk'] leading-none tracking-tighter">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-300">M Raj Kumar</span>
+                </h1>
+                
+                <h2 class="text-3xl md:text-4xl text-pink-300 font-medium">
+                    I'm a Cybersecurity Enthusiast &amp; Aspiring Penetration Tester
+                </h2>
+                
+                <p class="text-lg text-zinc-400 max-w-lg">
+                    Bug bounty hunter • Ethical hacker • SIEM analyst • Passionate about securing digital ecosystems
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a onclick="smoothScrollTo('projects')" 
+                       class="flex items-center gap-3 bg-white text-black hover:bg-pink-100 px-8 py-4 rounded-3xl font-semibold text-lg shadow-xl shadow-pink-500/20">
+                        <i class="fas fa-rocket"></i>
+                        Explore My Projects
+                    </a>
+                    
+                    <a href="mailto:rajerkumarh8@gmail.com" 
+                       class="flex items-center gap-3 border-2 border-pink-400 hover:bg-pink-500/10 text-pink-400 px-8 py-4 rounded-3xl font-semibold text-lg">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm">
+                    <div>
+                        <span class="block text-4xl font-bold text-pink-400">CEH</span>
+                        <span class="text-zinc-400">Certified Ethical Hacker</span>
+                    </div>
+                    <div class="h-12 w-px bg-pink-500/30"></div>
+                    <div>
+                        <span class="block text-4xl font-bold text-pink-400">3</span>
+                        <span class="text-zinc-400">Live Projects</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6 text-zinc-400">
+                    <a href="tel:9133756748" class="flex items-center gap-2 hover:text-pink-400">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9133756748</span>
+                    </a>
+                    <a href="mailto:rajerkumarh8@gmail.com" class="flex items-center gap-2 hover:text-pink-400">
+                        <i class="fas fa-envelope"></i>
+                        <span>rajerkumarh8@gmail.com</span>
+                    </a>
+                    <div class="text-xs px-4 py-2 bg-zinc-900 rounded-3xl flex items-center gap-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Bengaluru, India
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="relative flex justify-center">
+                <div class="relative w-80 h-80 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-transparent rounded-[4rem] rotate-12 blur-3xl"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-72 h-72 bg-zinc-900 rounded-3xl border-8 border-pink-400/30 shadow-2xl shadow-pink-500/40 flex items-center justify-center overflow-hidden">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4">🛡️</div>
+                                <div class="text-pink-300 text-2xl font-bold tracking-widest">HACKER MODE</div>
+                                <div class="text-xs text-zinc-500 mt-6">M Raj Kumar • Penetration Tester</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-6 -left-6 bg-black border border-pink-400 text-pink-400 text-xs font-medium px-4 py-2 rounded-3xl flex items-center gap-2 shadow-xl">
+                        <i class="fas fa-bug"></i>
+                        BUG BOUNTY
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-black border border-pink-400 text-pink-400 text-xs font-medium px-4 py-2 rounded-3xl flex items-center gap-2 shadow-xl">
+                        <i class="fas fa-shield-alt"></i>
+                        SIEM READY
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 flex flex-col items-center gap-1 text-pink-400/70 text-xs tracking-widest">
+            <div class="animate-bounce">SCROLL</div>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 border-t border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5 flex flex-col items-center md:items-start">
+                    <div class="relative mb-8 md:mb-10">
+                        <img src="/img/rajsuit1.jpg" alt="M Raj Kumar" 
+                             class="w-64 h-64 md:w-72 md:h-72 rounded-full object-cover border-8 border-pink-400 shadow-2xl shadow-pink-500/30 ring-4 ring-pink-500/10">
+                        <div class="absolute inset-0 rounded-full border-4 border-pink-400/30 animate-pulse"></div>
+                    </div>
+                    <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-4 text-center md:text-left">My Story</h2>
+                    <p class="text-pink-400 text-lg text-center md:text-left">From classrooms to command lines — building a career in cybersecurity</p>
+                </div>
+                
+                <div class="md:col-span-7 text-zinc-300 leading-relaxed text-lg">
+                    <p class="mb-6">
+                        As a cybersecurity enthusiast and aspiring penetration tester, I possess foundational skills in bug finding and bug bounty hunting, eager to further develop my expertise in the field.
+                    </p>
+                    <p>
+                        I love monitoring alerts and managing policy exceptions generated by SIEM systems, ensuring timely identification and response to critical security events. I am seeking to contribute to a dynamic team by enhancing security posture through vigilant oversight and proactive threat management.
+                    </p>
+                    
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <div class="flex items-center gap-2 text-sm bg-zinc-900 px-5 py-3 rounded-3xl">
+                            <i class="fas fa-code"></i>
+                            <span>Python Automation</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm bg-zinc-900 px-5 py-3 rounded-3xl">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Network Security</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm bg-zinc-900 px-5 py-3 rounded-3xl">
+                            <i class="fas fa-vial"></i>
+                            <span>Vulnerability Assessment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 bg-zinc-950 border-t border-b border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Education</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Sapthagiri Institute of Management</h3>
+                            <p class="text-pink-400">Hindupur, Sri Sathya Sai</p>
+                            <p class="text-pink-400 text-sm mt-1">(Affiliated to S.K University, Ananthapuramu)</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2025 – 2027</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">Master of Computer Applications (MCA) <span class="text-pink-300">"Pursuing"</span></p>
+                </div>
+                
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Saptagiri Degree College</h3>
+                            <p class="text-pink-400">Hindupur, Sri Sathya Sai</p>
+                            <p class="text-pink-400 text-sm mt-1">(Affiliated to S.K University, Ananthapuramu)</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2021 – 2024</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">Bachelor of Science (BSc) in Physics &amp; Computer Science</p>
+                </div>
+                
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Suvarna Bharathi Junior College</h3>
+                            <p class="text-pink-400">Hindupur, Sri Sathya Sai</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2018 – 2020</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">MPC</p>
+                </div>
+                
+                <div class="bg-black border border-pink-500/20 hover:border-pink-400 rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Ravindra Bharathi School</h3>
+                            <p class="text-pink-400">Hindupur, Sri Sathya Sai</p>
+                        </div>
+                        <div class="text-right text-xs bg-pink-500/10 text-pink-400 px-4 py-2 rounded-2xl font-medium">2017 – 2018</div>
+                    </div>
+                    <p class="mt-6 text-zinc-400">10th Grade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-zinc-950 border-t border-b border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Skills &amp; Technologies</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#E34F26] rounded-3xl flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/html5/ffffff" alt="HTML5" class="w-16 h-16">
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">HTML5</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-css3-alt text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">CSS</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#F7DF1E] rounded-3xl flex items-center justify-center shadow-lg shadow-yellow-400/40 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/javascript/000000" alt="JavaScript" class="w-16 h-16">
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">JavaScript</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#3776AB] rounded-3xl flex items-center justify-center shadow-lg shadow-blue-500/40 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/python/ffffff" alt="Python" class="w-16 h-16">
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Python</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#4479A1] rounded-3xl flex items-center justify-center shadow-lg shadow-blue-500/40 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/mysql/ffffff" alt="SQL" class="w-16 h-16">
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">SQL</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#FF2D00] rounded-3xl flex items-center justify-center shadow-lg shadow-red-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-user-secret text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Ethical Hacking</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#00C853] rounded-3xl flex items-center justify-center shadow-lg shadow-green-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-network-wired text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">NMAP</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#FF9800] rounded-3xl flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bug text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Burp Suite</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#000000] rounded-3xl flex items-center justify-center shadow-lg shadow-zinc-500/40 group-hover:scale-110 transition-transform">
+                        <img src="https://cdn.simpleicons.org/owasp/ffffff" alt="OWASP ZAP" class="w-16 h-16">
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">OWASP ZAP</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#9C27B0] rounded-3xl flex items-center justify-center shadow-lg shadow-purple-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-vial text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Penetration Testing</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#FF5722] rounded-3xl flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-lock text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Vulnerability Assessment</p>
+                </div>
+                <div class="text-center group">
+                    <div class="mx-auto w-24 h-24 bg-[#00BFA5] rounded-3xl flex items-center justify-center shadow-lg shadow-teal-500/40 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-halved text-6xl text-white"></i>
+                    </div>
+                    <p class="mt-4 text-pink-400 font-semibold text-lg">Cyber Security</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Training &amp; Internship</h2>
+            <div class="max-w-3xl mx-auto bg-gradient-to-br from-zinc-900 to-black border border-pink-500/30 rounded-3xl p-10">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-48">
+                        <span class="inline-block px-5 py-2 bg-pink-500 text-white text-sm font-semibold rounded-3xl">Oct 2023 — Feb 2024</span>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-semibold">Certified Ethical Hacker Internship</h3>
+                        <p class="text-pink-400 text-xl mb-4">ER Segment Solutions, Hyderabad</p>
+                        <p class="text-zinc-300 leading-relaxed">
+                            Acquired practical skills in network security, penetration testing, vulnerability assessment, manual testing, and automated testing. Learned directly from industry professionals in a real-world environment.
+                        </p>
+                        <div class="mt-8 flex gap-4 flex-wrap">
+                            <span class="text-xs px-4 py-2 bg-pink-500/10 text-pink-400 rounded-3xl">Penetration Testing</span>
+                            <span class="text-xs px-4 py-2 bg-pink-500/10 text-pink-400 rounded-3xl">Vulnerability Assessment</span>
+                            <span class="text-xs px-4 py-2 bg-pink-500/10 text-pink-400 rounded-3xl">Network Security</span>
+                            <span class="text-xs px-4 py-2 bg-pink-500/10 text-pink-400 rounded-3xl">Burp Suite &amp; OWASP ZAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 bg-zinc-950 border-t border-b border-pink-500/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-4">Featured Projects</h2>
+        <p class="text-zinc-400 mb-12">Built with passion. Coded with purpose.</p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- JS-Crawler -->
+            <div class="project-card bg-black border border-zinc-800 hover:border-pink-400 rounded-3xl overflow-hidden">
+                <div class="h-2 bg-gradient-to-r from-pink-400 to-purple-500"></div>
+                <div class="p-8">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-pink-400 font-medium">July 2024</span>
+                        <i class="fas fa-spider text-4xl text-pink-400/30"></i>
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-3">JS-Crawler</h3>
+                    <p class="text-zinc-400 mb-8">
+                        Python-based web crawler using Requests &amp; BeautifulSoup to extract JavaScript and JSON files from web pages. Multi-threading + CLI interface with argparse. Beautiful terminal UI using pyfiglet &amp; termcolor.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Python</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Requests</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">BeautifulSoup</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Multi-threading</span>
+                    </div>
+                     <a href="https://github.com/raj80rk/js-crawler" target="_blank" class="inline-flex items-center text-pink-400 hover:text-pink-300 font-medium">
+                        View Source <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Port Scanner - Updated with your GitHub link -->
+            <div class="project-card bg-black border border-zinc-800 hover:border-pink-400 rounded-3xl overflow-hidden">
+                <div class="h-2 bg-gradient-to-r from-pink-400 to-cyan-400"></div>
+                <div class="p-8">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-pink-400 font-medium">May 2024</span>
+                        <i class="fas fa-door-open text-4xl text-pink-400/30"></i>
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-3">Port Scanner</h3>
+                    <p class="text-zinc-400 mb-8">
+                        Multi-threaded Python port scanner using socket and concurrent.futures to quickly identify open common ports on target IPs. Beautiful banner and service mapping using pyfiglet &amp; termcolor.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Python</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Socket</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Multi-threading</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Nmap Inspired</span>
+                    </div>
+                    <a href="https://github.com/raj80rk/get-portscan" target="_blank" class="inline-flex items-center text-pink-400 hover:text-pink-300 font-medium">
+                        View Source <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- JS-SecretFinder-H8 -->
+            <div class="project-card bg-black border border-zinc-800 hover:border-pink-400 rounded-3xl overflow-hidden">
+                <div class="h-2 bg-gradient-to-r from-pink-400 to-amber-400"></div>
+                <div class="p-8">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-pink-400 font-medium">September 2024</span>
+                        <i class="fas fa-key text-4xl text-pink-400/30"></i>
+                    </div>
+                    <h3 class="text-3xl font-semibold mb-3">JS-SecretFinder-H8</h3>
+                    <p class="text-zinc-400 mb-8">
+                        A fast, multi-threaded crawler to discover JavaScript/JSON files and detect exposed secrets (API keys, tokens, etc.). Ideal for bug bounty hunters and security pros.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Python</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Multi-threading</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Secret Scanning</span>
+                        <span class="skill-pill text-xs px-4 py-1 bg-zinc-900 rounded-3xl border border-pink-400/30">Regex + Entropy</span>
+                    </div>
+                    <a href="https://github.com/raj80rk/JS-secretfinder-h8" target="_blank" class="inline-flex items-center text-pink-400 hover:text-pink-300 font-medium">
+                        View Source <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+    <!-- CERTIFICATIONS (Only One Time) -->
+    <section id="certifications" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-header text-5xl font-semibold font-['Space_Grotesk'] mb-12">Certifications</h2>
+            
+            <div class="flex flex-wrap gap-8 justify-center">
+                <div onclick="showCertificate('img/rajer.jpeg')" 
+                     class="bg-black border border-pink-400/30 hover:border-pink-400 hover:scale-105 cursor-pointer text-center rounded-3xl px-10 py-8 w-72 transition-all">
+                    <i class="fas fa-user-secret text-6xl text-pink-400 mb-4"></i>
+                    <h3 class="font-semibold text-2xl">Certified Ethical Hacker (CEH)</h3>
+                    <p class="text-pink-300">ER Segment Solutions • 2024</p>
+                    <p class="text-xs text-zinc-500 mt-4">Click to view certificate →</p>
+                </div>
+                
+                <div onclick="showCertificate('img/python-certificate.jpg')" 
+                     class="bg-black border border-pink-400/30 hover:border-pink-400 hover:scale-105 cursor-pointer text-center rounded-3xl px-10 py-8 w-72 transition-all">
+                    <i class="fab fa-python text-6xl text-pink-400 mb-4"></i>
+                    <h3 class="font-semibold text-2xl">Python Programming</h3>
+                    <p class="text-pink-300">Completed with distinction</p>
+                    <p class="text-xs text-zinc-500 mt-4">Click to view certificate →</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificate Modal -->
+        <div id="certificateModal" onclick="if(event.target === this) hideCertificate()" 
+             class="hidden fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-6">
+            <div class="relative max-w-4xl w-full max-h-[90vh]">
+                <button onclick="hideCertificate()" 
+                        class="absolute -top-4 -right-4 bg-black border-2 border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-black rounded-full w-11 h-11 flex items-center justify-center text-3xl font-bold z-10 shadow-2xl">
+                    ✕
+                </button>
+                <img id="modalCertificateImage" src="" alt="Certificate" 
+                     class="w-full h-auto rounded-3xl shadow-2xl border border-pink-400/50 max-h-[85vh] object-contain bg-zinc-900">
+                <div class="text-center text-zinc-400 text-sm mt-4">
+                    Click outside the image or on ✕ to close
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-black to-zinc-950 border-t border-pink-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-xl mx-auto text-center">
+                <h2 class="text-5xl font-semibold font-['Space_Grotesk'] mb-6">Let's Secure the Future Together</h2>
+                <p class="text-zinc-400 mb-10">Whether it's a vulnerability, a collaboration, or just a chat about cybersecurity — I'm always ready.</p>
+                
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
+                    <a href="mailto:rajerkumarh8@gmail.com" 
+                       class="group flex-1 flex items-center justify-center gap-3 bg-pink-500 hover:bg-pink-600 text-white rounded-3xl px-8 py-6 text-xl font-medium">
+                        <i class="fas fa-envelope group-active:scale-110"></i>
+                        Send me an email
+                    </a>
+                    <a href="tel:9133756748" 
+                       class="group flex-1 flex items-center justify-center gap-3 border-2 border-pink-400 text-pink-400 hover:text-white hover:bg-pink-400 rounded-3xl px-8 py-6 text-xl font-medium">
+                        <i class="fas fa-phone-volume group-active:scale-110"></i>
+                        Call me directly
+                    </a>
+                </div>
+                <p class="text-xs text-zinc-500"> Bengaluru, India • Available for remote &amp; full-time roles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-10 border-t border-pink-500/20 text-xs text-zinc-400">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>© 2026 M Raj Kumar • All Rights Reserved</div>
+            <div class="flex items-center gap-6">
+                <a href="https://linkedin.com" target="_blank" class="hover:text-pink-400"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com" target="_blank" class="hover:text-pink-400"><i class="fab fa-github"></i></a>
+                <a href="#" onclick="downloadResume()" class="flex items-center gap-1 hover:text-pink-400">
+                    <i class="fas fa-file-pdf"></i> Resume
+                </a>
+            </div>
+            <div class="text-center md:text-right">
+                Built with ❤️ &amp; <span class="text-pink-400">pink</span> for cybersecurity
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showCertificate(imageSrc) {
+            const modal = document.getElementById('certificateModal');
+            const img = document.getElementById('modalCertificateImage');
+            img.src = imageSrc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideCertificate() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function smoothScrollTo(section) {
+            const el = document.getElementById(section);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('hamburger-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.style.display = 'flex';
+                menu.classList.remove('hidden');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menu.style.display = 'none';
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        function downloadResume() {
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed; bottom:24px; right:24px; background:#ff69b4; color:black; padding:16px 24px; border-radius:9999px; font-weight:600; box-shadow:0 10px 15px -3px rgb(249 115 22); z-index:10000';
+            toast.innerHTML = '📄 Resume downloaded! (Update link with your actual PDF)';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        window.onload = () => {
+            console.log('%c👾 Welcome to M Raj Kumar\'s Cybersecurity Portfolio!', 'color:#ff69b4; font-family:monospace; font-size:14px;');
+        };
+    </script>
+</body>
+</html>
